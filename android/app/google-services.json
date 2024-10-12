@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "375926798538",
+    "project_id": "e-commerce-agent-86a0e",
+    "storage_bucket": "e-commerce-agent-86a0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375926798538:android:a57803d56e78ec5cd39c33",
+        "android_client_info": {
+          "package_name": "com.example.pets_ecom_platform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375926798538-lvvrr30epbqb8kgcr5i2075nmdmnnjcp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpglZNy3YqhIafTOfKJQEIaJ40KvUetK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375926798538-lvvrr30epbqb8kgcr5i2075nmdmnnjcp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
