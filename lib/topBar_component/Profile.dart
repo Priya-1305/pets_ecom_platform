@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../screens/sign_in_screen.dart';
+import '../order/view_order.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -33,6 +34,16 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 40),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ViewOrdersScreen()),
+                );
+              },
+              child: Text('View Your Orders'),
+            ),
 
             // Logout button
             ElevatedButton(

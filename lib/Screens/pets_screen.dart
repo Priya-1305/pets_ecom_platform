@@ -1,13 +1,33 @@
 import 'package:flutter/material.dart';
+import '../topBar_component/cart.dart'; // Import CartScreen
 
 class PetsScreen extends StatelessWidget {
   final List<String> categories = ['Dogs', 'Cats', 'Birds', 'Fish'];
 
   @override
   Widget build(BuildContext context) {
+    // Initialize an empty cartItems list to hold the items added to the cart
+    List<Map<String, dynamic>> cartItems = [];
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Choose a Category'),
+        centerTitle: true, // Centers the title
+        automaticallyImplyLeading: false,
+        actions: [
+          // IconButton(
+          //   icon: Icon(Icons.shopping_cart),
+          //   onPressed: () {
+          //     // Navigate to the Cart Screen
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => CartScreen(cartItems: cartItems),
+          //       ),
+          //     );
+          //   },
+          // ),
+        ],
       ),
       body: ListView.builder(
         itemCount: categories.length,
@@ -19,8 +39,11 @@ class PetsScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      ProductsScreen(category: categories[index]),
+                  builder: (context) => ProductsScreen(
+                    category: categories[index],
+                    cartItems:
+                        cartItems, // Pass the cartItems list to ProductsScreen
+                  ),
                 ),
               );
             },
@@ -33,24 +56,40 @@ class PetsScreen extends StatelessWidget {
 
 class ProductsScreen extends StatefulWidget {
   final String category;
+  final List<Map<String, dynamic>> cartItems; // Accept the cartItems list
 
-  ProductsScreen({required this.category});
+  ProductsScreen({required this.category, required this.cartItems});
 
   @override
   _ProductsScreenState createState() => _ProductsScreenState();
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  // Example data for pet essentials
   final Map<String, List<Map<String, dynamic>>> productsData = {
     'Dogs': [
       {'name': 'Dog Food', 'price': 30, 'image': 'assets/food(m).jpeg'},
       {'name': 'Leash', 'price': 15, 'image': 'assets/leash.jpeg'},
-      {'name': 'Leash', 'price': 15, 'image': 'assets/toy.jpeg'},
-      {'name': 'Leash', 'price': 15, 'image': 'assets/leash.jpeg'},
-      {'name': 'Leash', 'price': 15, 'image': 'assets/leash.jpeg'},
-      {'name': 'Leash', 'price': 15, 'image': 'assets/leash.jpeg'},
-      {'name': 'Medicine', 'price': 50, 'image': 'assets/dog_medicine.jpg'},
+      {
+        'name': 'Dog Dental Chews',
+        'price': 15,
+        'image': 'assets/Dog Dental Chews.jpeg'
+      },
+      {'name': 'Dog Bed', 'price': 15, 'image': 'assets/bed.jpeg'},
+      {'name': 'Dog Brush', 'price': 15, 'image': 'assets/brush.jpg'},
+      {'name': 'Dog Chew Toy', 'price': 15, 'image': 'assets/chew toy.jpeg'},
+      {
+        'name': 'Collar with ID Tag',
+        'price': 50,
+        'image': 'assets/color_id.jpeg'
+      },
+      {'name': 'Treat', 'price': 50, 'image': 'assets/treat.jpg'},
+      {'name': 'Toys', 'price': 50, 'image': 'assets/toy.png'},
+      {'name': 'Dog Shampoo', 'price': 50, 'image': 'assets/shampoo.jpeg'},
+      {
+        'name': 'Medicine',
+        'price': 50,
+        'image': 'assets/Puppy Training Pads.jpg'
+      },
     ],
     'Cats': [
       {'name': 'Cat Food', 'price': 25, 'image': 'assets/cat_food.jpg'},
@@ -78,11 +117,34 @@ class _ProductsScreenState extends State<ProductsScreen> {
     });
   }
 
+  void _addToCart(Map<String, dynamic> product) {
+    setState(() {
+      widget.cartItems.add(product); // Add item to cartItems
+    });
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('${product['name']} added to cart'),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Essentials for ${widget.category}'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              // Navigate to the Cart Screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CartScreen(cartItems: widget.cartItems),
+                ),
+              );
+            },
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(60.0),
           child: Padding(
@@ -110,9 +172,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
               subtitle: Text('\$${filteredProducts[index]['price']}'),
               trailing: ElevatedButton(
                 onPressed: () {
-                  // Handle order now action
+                  _addToCart(filteredProducts[index]); // Add item to cart
                 },
-                child: Text('Buy Now'),
+                child: Text('Add to Cart'),
               ),
             ),
           );

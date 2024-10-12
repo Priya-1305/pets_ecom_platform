@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../topBar_component/Profile.dart';
+import '../topBar_component/cart.dart';
+
+import '../Screens/pets_screen.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -9,7 +12,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   TopAppBar({Key? key})
       : preferredSize = Size.fromHeight(60.0), // Set the preferred height
         super(key: key);
-
+  List<Map<String, dynamic>> cartItems = [];
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -24,7 +27,13 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: Icon(Icons.shopping_cart),
           onPressed: () {
-            // Navigate to My Orders
+            // Navigate to the Cart Screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CartScreen(cartItems: cartItems),
+              ),
+            );
           },
         ),
         IconButton(
