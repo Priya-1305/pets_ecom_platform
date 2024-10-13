@@ -8,17 +8,21 @@ class SplashScreen extends StatelessWidget {
       // Use a Stack to overlay text and button over the background image
       body: Stack(
         children: [
-          // Background image
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                    'assets/background.jpg'), // Add your image in assets folder
-                fit: BoxFit.cover,
-              ),
+          // Background Image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/pets.jpg', // Replace with your background image
+              fit: BoxFit.cover, // Ensures the image covers the entire screen
+              alignment: Alignment.center,
             ),
           ),
-          // Hero section with text and sign-in button
+          // Overlay to darken the image
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.6), // Semi-transparent overlay
+            ),
+          ),
+          // Main Content
           Positioned(
             left: 20,
             bottom: 50,
@@ -31,7 +35,7 @@ class SplashScreen extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    backgroundColor: Colors.amber,
+                    // backgroundColor: Colors.amber,
                   ),
                 ),
                 SizedBox(height: 20),

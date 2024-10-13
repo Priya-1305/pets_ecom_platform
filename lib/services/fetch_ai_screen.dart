@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class FetchAIService {
   // Use the actual IP address of your local machine if running on a physical device/emulator
-  final String _apiUrl = 'http://192.168.1.69:5000/api/chat/';
+  final String _apiUrl = 'http://192.168.1.69:5002/api/chat/';
 
   Future<String> sendMessage(String message) async {
     try {

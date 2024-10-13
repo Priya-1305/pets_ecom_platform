@@ -45,16 +45,21 @@ class DashboardHome extends StatelessWidget {
       // Middle interactive text and background image
       child: Stack(
         children: [
-          // Background image
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/dashboard_background.jpg'),
-                fit: BoxFit.cover,
-              ),
+          // Background Image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/pets.jpg', // Replace with your background image
+              fit: BoxFit.cover, // Ensures the image covers the entire screen
+              alignment: Alignment.center,
             ),
           ),
-          // Interactive text
+          // Overlay to darken the image
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.6), // Semi-transparent overlay
+            ),
+          ),
+          // Main Content
           Center(
             child: Text(
               'Find Your Perfect Pet',

@@ -92,9 +92,19 @@ class _ProductsScreenState extends State<ProductsScreen> {
       },
     ],
     'Cats': [
-      {'name': 'Cat Food', 'price': 25, 'image': 'assets/cat_food.jpg'},
-      {'name': 'Cat Litter', 'price': 20, 'image': 'assets/cat_litter.jpg'},
-      {'name': 'Medicine', 'price': 40, 'image': 'assets/cat_medicine.jpg'},
+      {'name': 'Cat Food', 'price': 25, 'image': 'assets/cfood.jpeg'},
+      {'name': 'Cat Litter', 'price': 20, 'image': 'assets/litter.jpg'},
+      {'name': 'bowl', 'price': 40, 'image': 'assets/water.jpeg'},
+      {'name': 'Toys', 'price': 40, 'image': 'assets/ball.jpg'},
+      {'name': 'Pet Carrier', 'price': 40, 'image': 'assets/carrier.jpeg'},
+      {'name': 'Bed', 'price': 40, 'image': 'assets/cat_bed.jpeg'},
+      {'name': 'grooming tools', 'price': 40, 'image': 'assets/grooming.jpg'},
+      {
+        'name': 'Identification and Microchip',
+        'price': 40,
+        'image': 'assets/Identification and Microchip.jpeg'
+      },
+      {'name': 'Scratching Post', 'price': 40, 'image': 'assets/scratch.jpeg'},
     ],
     // Add data for other categories like Birds, Fish
   };
